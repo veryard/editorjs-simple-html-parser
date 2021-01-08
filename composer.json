@@ -4,12 +4,12 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Veryard\\EJSParser\\": "src/"
+            "Durlecode\\EJSParser\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Veryard\\EJSParser\\Tests\\": "tests/"
+            "Durlecode\\EJSParser\\Tests\\": "tests/"
         }
     },
     "scripts": {
