@@ -1,6 +1,6 @@
- [![codecov](https://codecov.io/gh/Durlecode/editorjs-simple-html-parser/branch/master/graph/badge.svg?token=OKG54EX9C3)](https://codecov.io/gh/Durlecode/editorjs-simple-html-parser)
- [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 # Simple PHP Parser for Editor.js
+
+Original code [editorjs-simple-html-parser](https://github.com/Durlecode/editorjs-simple-html-parser) - Thanks Durlecode!
 
 Parse to HTML clean JSON Data from [Editor.js](https://editorjs.io/ "Editor.js Homepage")
 
