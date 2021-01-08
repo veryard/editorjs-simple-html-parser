@@ -1,15 +1,15 @@
 {
-    "name": "durlecode/editorjs-simple-html-parser",
+    "name": "veryard/editorjs-simple-html-parser",
     "description": "A simple Json to Html parser for EditorJS library",
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Durlecode\\EJSParser\\": "src/"
+            "Veryard\\EJSParser\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Durlecode\\EJSParser\\Tests\\": "tests/"
+            "Veryard\\EJSParser\\Tests\\": "tests/"
         }
     },
     "scripts": {

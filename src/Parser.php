@@ -1,6 +1,6 @@
 <?php
 
-namespace Durlecode\EJSParser;
+namespace Veryard\EJSParser;
 
 use DOMDocument;
 use DOMText;
