@@ -120,8 +120,14 @@ class Parser
                 case 'warning':
                     $this->parseWarning($block);
                     break;
+                case 'quote':
+                    $this->parseQuote($block);
+                    break;
                 case 'simpleImage':
                     $this->parseImage($block);
+                    break;
+                case 'checklist':
+                    $this->parseChecklist($block);
                     break;
                 default:
                     break;
@@ -321,6 +327,25 @@ class Parser
         $this->dom->appendChild($wrapper);
     }
 
+    private function parseChecklist($block)
+    {
+        $wrapper = $this->dom->createElement('div');
+        $wrapper->setAttribute('class', "{$this->prefix}-checklist");
+
+        $list = $this->dom->createElement('ul');
+
+        foreach ($block->data->items as $item) {
+            $li = $this->dom->createElement('li');
+            $li->appendChild($this->html5->loadHTMLFragment($item));
+            $list->appendChild($li);
+        }
+
+        $wrapper->appendChild($list);
+
+        $this->dom->appendChild($wrapper);
+    }
+
+
     private function parseWarning($block)
     {
         $title = new DOMText($block->data->title);
@@ -336,6 +361,36 @@ class Parser
         $messageWrapper = $this->dom->createElement('p');
 
         $messageWrapper->appendChild($message);
+
+        $textWrapper->appendChild($titleWrapper);
+        $textWrapper->appendChild($messageWrapper);
+
+        $icon = $this->dom->createElement('ion-icon');
+        $icon->setAttribute('name', 'information-outline');
+        $icon->setAttribute('size', 'large');
+
+        $wrapper->appendChild($icon);
+        $wrapper->appendChild($textWrapper);
+
+        $this->dom->appendChild($wrapper);
+    }
+
+    private function parseQuote($block)
+    {
+        $text = new DOMText($block->data->text);
+        $caption = new DOMText($block->data->caption);
+        $align = new DOMText($block->data->alignment);
+
+        $wrapper = $this->dom->createElement('div');
+        $wrapper->setAttribute('class', "{$this->prefix}-warning");
+
+        $textWrapper = $this->dom->createElement('div');
+        $titleWrapper = $this->dom->createElement('p');
+
+        $titleWrapper->appendChild($text);
+        $messageWrapper = $this->dom->createElement('p');
+
+        $messageWrapper->appendChild($caption);
 
         $textWrapper->appendChild($titleWrapper);
         $textWrapper->appendChild($messageWrapper);
