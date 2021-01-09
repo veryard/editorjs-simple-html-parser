@@ -335,8 +335,12 @@ class Parser
         $list = $this->dom->createElement('ul');
 
         foreach ($block->data->items as $item) {
+            $text = $item->text;
+            $checked = $item->checked;
+
             $li = $this->dom->createElement('li');
-            $li->appendChild($this->html5->loadHTMLFragment($item));
+            $li->setAttribute('class', "{$this->prefix}-checklist-item" . ($checked ? " {$this->prefix}-checklist-item-active" : ""));
+            $li->appendChild($this->html5->loadHTMLFragment($text));
             $list->appendChild($li);
         }
 
@@ -382,25 +386,19 @@ class Parser
         $align = new DOMText($block->data->alignment);
 
         $wrapper = $this->dom->createElement('div');
-        $wrapper->setAttribute('class', "{$this->prefix}-warning");
+        $wrapper->setAttribute('class', "{$this->prefix}-quote");
 
-        $textWrapper = $this->dom->createElement('div');
         $titleWrapper = $this->dom->createElement('p');
+        $titleWrapper->setAttribute("class", "{$this->prefix}-quote-title");
 
         $titleWrapper->appendChild($text);
         $messageWrapper = $this->dom->createElement('p');
+        $messageWrapper->setAttribute("class", "{$this->prefix}-quote-caption");
 
         $messageWrapper->appendChild($caption);
 
-        $textWrapper->appendChild($titleWrapper);
-        $textWrapper->appendChild($messageWrapper);
-
-        $icon = $this->dom->createElement('ion-icon');
-        $icon->setAttribute('name', 'information-outline');
-        $icon->setAttribute('size', 'large');
-
-        $wrapper->appendChild($icon);
-        $wrapper->appendChild($textWrapper);
+        $wrapper->appendChild($titleWrapper);
+        $wrapper->appendChild($messageWrapper);
 
         $this->dom->appendChild($wrapper);
     }

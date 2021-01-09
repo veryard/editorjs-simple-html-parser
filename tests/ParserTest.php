@@ -22,7 +22,9 @@ class ParserTest extends TestCase
 
     public function testToHtml()
     {
-        $this->assertIsString(Parser::parse($this->seed)->toHtml());
+        $html = Parser::parse($this->seed)->toHtml();
+        file_put_contents(__DIR__ . '/output/generated.html', $html);
+        $this->assertIsString($html);
     }
 
     public function testGetters()

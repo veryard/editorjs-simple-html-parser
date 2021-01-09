@@ -209,6 +209,26 @@
             "data": {
                 "foo": "bar"
             }
+        },
+        {
+            "data": {
+                "text": "Quote",
+                "caption": "Brad",
+                "alignment": "left"
+            },
+            "type": "quote"
+        }, 
+        {
+            "data": {
+                "items": [{
+                    "text": "Tester",
+                    "checked": false
+                }, {
+                    "text": "sdfjnsdfsdf",
+                    "checked": true
+                }]
+            },
+            "type": "checklist"
         }
     ],
     "version" : "2.16.1"
